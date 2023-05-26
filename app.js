@@ -12,7 +12,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const rateLimiter = require('express-rate-limit');
 const morgan = require('morgan');
-const router = require('./src/routes/userRouter');
+const router = require('./src/routes/authRouter');
 
 require('dotenv').config();
 
@@ -45,13 +45,9 @@ readdirSync("./src/routes").map(r => app.use("/api/v1", require(`./src/routes/${
 //app.use("/api/v1", router)
 //undefine router
 app.use('*',(req,res) => {
-    res.status(404).send('This is Rona Router');
+    res.status(404).send('This is undefined Router');
 });
 
-app.use((req,res,next)=>{
-    
-    next(createError(404,"user not found"))
-})
 
 // server error handling-- all error handeling in server side
 

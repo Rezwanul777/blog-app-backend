@@ -5,7 +5,7 @@ const userModel = require("../models/userModel");
 exports.requireSignIn=async(req,res,next)=>{
    try {
       const decode=jwt.verify(
-         req.headers.authorization,
+         req.headers.token,
          process.env.JWT_SECRET
          
       );
